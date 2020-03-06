@@ -1,16 +1,14 @@
-package com.finexus.tests; 
- import io.github.bonigarcia.wdm.WebDriverManager; 
- import java.util.ArrayList;
+package com.example.tests;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class KttapePDP {
+public class AddToCartFromPDP {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,47 +16,23 @@ public class KttapePDP {
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
-    WebDriverManager.chromedriver().setup(); driver = new ChromeDriver();
+    driver = new FirefoxDriver();
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testKttapePDP() throws Exception {
+  public void testAddToCartFromPDP() throws Exception {
     driver.get("https://www.kttape.com/");
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='What is KT Tape®?'])[1]/following::span[1]")).click();
-    driver.findElement(By.id("option-label-kt_tape_pro-210-item-50")).click();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='$19.99'])[1]/following::span[1]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Products'])[1]/following::img[1]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Qty'])[1]/following::i[1]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Qty'])[1]/following::span[1]")).click();
     driver.findElement(By.id("top-cart-btn-checkout")).click();
-    driver.findElement(By.id("btn-minicart-close")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Register for newsletter'])[1]/following::span[1]")).click();
   }
 
-public void selectFrame(int index) {
-		try {
-			Thread.sleep(5000);
-			driver.switchTo().frame(index);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public void selectParentFrame() {		
-		driver.switchTo().parentFrame();
-	}
-
-	public void selectWindow(int index) {
-		try {
-			Thread.sleep(5000);
-			ArrayList<String> productCatalogueWindow = new ArrayList<String>(driver.getWindowHandles());
-			// change focus to new tab
-			driver.switchTo().window(productCatalogueWindow.get(index));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@AfterClass(alwaysRun = true)
+  @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {
     driver.quit();
     String verificationErrorString = verificationErrors.toString();

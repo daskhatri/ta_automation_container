@@ -10,7 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class AutoFabPDP {
+public class AddToCartFromPDP {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -24,25 +24,14 @@ public class AutoFabPDP {
   }
 
   @Test
-  public void testAutoFabPDP() throws Exception {
-    driver.get("https://www.fabautoparts.com/");
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='All-Weather Mats, Carpet Mats, Rubber Mats'])[1]/following::span[1]")).click();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Added to wishlist'])[27]/following::img[1]")).click();
-    driver.findElement(By.id("year")).click();
-    new Select(driver.findElement(By.id("year"))).selectByVisibleText("2020");
-    driver.findElement(By.id("year")).click();
-    driver.findElement(By.id("make")).click();
-    new Select(driver.findElement(By.id("make"))).selectByVisibleText("Acura");
-    driver.findElement(By.id("make")).click();
-    driver.findElement(By.id("model")).click();
-    new Select(driver.findElement(By.id("model"))).selectByVisibleText("ILX");
-    driver.findElement(By.id("model")).click();
-    driver.findElement(By.id("product-addtocart-button")).click();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Search'])[3]/following::a[1]")).click();
+  public void testAddToCartFromPDP() throws Exception {
+    driver.get("https://www.kttape.com/");
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='What is KT Tape®?'])[1]/following::span[1]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Products'])[1]/following::img[1]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Qty'])[1]/following::i[1]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Qty'])[1]/following::span[1]")).click();
     driver.findElement(By.id("top-cart-btn-checkout")).click();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Email Address'])[3]/following::input[1]")).click();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Email Address'])[3]/following::input[1]")).clear();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Email Address'])[3]/following::input[1]")).sendKeys("blubd.softtech@gmail.com");
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Register for newsletter'])[1]/following::span[1]")).click();
   }
 
 public void selectFrame(int index) {
